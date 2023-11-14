@@ -27,7 +27,7 @@ extern const AP_HAL::HAL &hal;
 const float OA_MARGIN_MAX_DEFAULT = 5;
 const int16_t OA_OPTIONS_DEFAULT = 1;
 
-const int16_t OA_UPDATE_MS = 1000;      // path planning updates run at 1hz
+const int16_t OA_UPDATE_MS = 100;      // path planning updates run at 10hz
 const int16_t OA_TIMEOUT_MS = 3000;     // results over 3 seconds old are ignored
 
 const AP_Param::GroupInfo AP_OAPathPlanner::var_info[] = {
@@ -248,7 +248,6 @@ void AP_OAPathPlanner::avoidance_thread()
     }
 
     while (true) {
-
         // if database queue needs attention, service it faster
         if (_oadatabase.process_queue()) {
             hal.scheduler->delay(1);
@@ -268,8 +267,7 @@ void AP_OAPathPlanner::avoidance_thread()
         Location destination_new;
         {
             WITH_SEMAPHORE(_rsem);
-            if (now - avoidance_request.request_time_ms > OA_TIMEOUT_MS) {
-                // this is a very old request, don't process it
+            if (now - avoidance_request.request_time_ms > OA_TIMEOUT_MS) {                // this is a very old request, don't process it
                 continue;
             }
 
