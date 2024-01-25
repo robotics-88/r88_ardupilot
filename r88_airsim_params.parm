@@ -21,15 +21,39 @@ ATC_RAT_YAW_D	0.09
 ATC_RAT_YAW_I	0.2
 ATC_RAT_YAW_P	2.0
 
+# Position control params
+PSC_JERK_XY      10.0
+
 # OA params
 
-PRX1_TYPE        2
-OA_TYPE          1
+PRX1_TYPE        0 # 2
+OA_TYPE          0 # 1
 OA_BR_ALT_MIN    1.0
 OA_BR_LOOKAHEAD  4.0
 OA_MARGIN_MAX    2.0
 GUID_OPTIONS     0.0
 
+# EKF params. Use ExternalNAV for SRC1, GPS for SRC2, and OpticalFlow for SRC3
+EK3_SRC1_POSXY   6
+EK3_SRC1_VELXY   6
+EK3_SRC1_POSZ    6
+EK3_SRC1_VELZ    6
+EK3_SRC1_YAW     6
+
+EK3_SRC2_POSXY   3
+EK3_SRC2_VELXY   3
+EK3_SRC2_POSZ    1
+EK3_SRC2_VELZ    3
+EK3_SRC2_YAW     1
+
+# No optical flow in sim
+# EK3_SRC3_POSXY   0
+# EK3_SRC3_VELXY   5
+# EK3_SRC3_POSZ    1
+# EK3_SRC3_VELZ    0
+# EK3_SRC3_YAW     1
+
 # Other params
 
 ARMING_CHECK 0
+VISO_TYPE 1
