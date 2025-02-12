@@ -1,0 +1,12 @@
+include ../CubeOrangePlus/hwdef-bl.dat
+
+undef USB_STRING_PRODUCT
+undef APJ_BOARD_ID
+
+# use a different board ID, so vehicles with this installed are prevented from loading
+# the firmware without OpenDroneID enabled
+APJ_BOARD_ID 10063
+USB_STRING_PRODUCT "CubeOrange+ODID-BL"
+
+# enable and enforce OpenDroneID
+define AP_OPENDRONEID_ENABLED 1

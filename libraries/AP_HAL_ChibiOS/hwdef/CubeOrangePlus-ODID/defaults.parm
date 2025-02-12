@@ -1,0 +1,17 @@
+include ../CubeOrangePlus/defaults.parm
+
+# Enable CAN driver
+CAN_P1_DRIVER 1
+CAN_P2 DRIVER 1
+
+# enforce OpenDroneID. Note that we need to lock down key parameters
+# to ensure the integrity of the RemoteID system
+DID_ENABLE 1 @READONLY
+# If setting persistent UAS ID at first reception of Basic ID from OEM's config tool
+# set the DID_OPTIONS to 5 , otherwise set to 1. At first reception of Basic ID, the
+# UAS ID, Type, and UA Type will be set to the value in the Basic ID message and DID_OPTIONS
+# will be set to 1.
+DID_OPTIONS 5 
+DID_MAVPORT -1 
+DID_CANDRIVER 1 
+AHRS_EKF_TYPE 3 @READONLY
